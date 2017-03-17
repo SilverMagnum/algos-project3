@@ -1,0 +1,96 @@
+>> x
+
+x =
+
+     1
+     2
+     3
+     5
+     7
+     8
+    10
+
+>> y = [3;5;7;11;14;15;19]
+
+y =
+
+     3
+     5
+     7
+    11
+    14
+    15
+    19
+
+>> close
+>> plot(x,y,'o')
+>> plot(x,y,'o')
+>> title 'Initial Data Points'
+>> xlabel 'x'
+>> ylabel 'y'
+>> n = length(x)
+
+n =
+
+     7
+
+>> M = [ones(n,1),x];
+>> f = [0 0 1 1]'
+
+f =
+
+     0
+     0
+     1
+     1
+
+>> f = [0 0 1 1]'
+
+f =
+
+     0
+     0
+     1
+     1
+
+>> f = [0 0 1 1]'
+
+f =
+
+     0
+     0
+     1
+     1
+
+>> f = [0 0 1 1]';
+>> LB = [-inf -inf 0 0];
+>> UB = [];
+>> A = [[M,-ones(n,1),zeros(n,1)];[-M,zeros(n,1),-ones(n,1)]];
+b = [y;-y];
+>> params = linprog(f,A,b,[],[],LB,UB);
+
+Optimal solution found.
+
+>> coef = params(1:2)
+
+coef =
+
+    2.4286
+    1.7143
+
+>> params(3)
+
+ans =
+
+    1.1429
+
+>> params(4)
+
+ans =
+
+     0
+
+>> plot(x,y,'o',x,coef(1) + coef(2)*x,'-')
+>> title 'Resulting Minimizing Line From linprog'
+>> xlabel 'x'
+>> ylabel 'y'
