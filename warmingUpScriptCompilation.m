@@ -20,7 +20,7 @@ b = [tempC; -tempC];
 params = linprog(f, A, b, [], [], LB, UB);
 coefSetTwo = params(1:2:3:4:5:6);
 
-plot(day, tempC, 'o', day, coefSetTwo(1) + coefSetTwo(2) * day + coefSetTwo(3) * (cos(2 * pi * day / 365.25)) + coefSetTwo(4) * (sin(2 * pi * day / 365.25)) + coefSetTwo(5) * (cos(2 * pi * day / (365.25 * 10.7))) + coefSetTwo(6) * (sin(2 * pi * day / (365.25 * 10.7))), '-', day, coefSetOne(1) + coefSetOne(2) * day, '-')
+plot(day, tempC, 'o', day, -coefSetOne(1) + coefSetTwo(1) + coefSetTwo(2) * day + coefSetTwo(3) * (cos(2 * pi * day / 365.25)) + coefSetTwo(4) * (sin(2 * pi * day / 365.25)) + coefSetTwo(5) * (cos(2 * pi * day / (365.25 * 10.7))) + coefSetTwo(6) * (sin(2 * pi * day / (365.25 * 10.7))), '-', day, -coefSetOne(1) + coefSetOne(2) * day, '-')
 title 'Average Temperature Trend from May 1st, 1952 to Oct. 17th, 2013'
 xlabel 'Days since May 1st, 1952'
 ylabel 'Average Temperature (C)'
